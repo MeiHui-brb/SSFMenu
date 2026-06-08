@@ -1,8 +1,20 @@
-const sections = [
+const sections=[
+{
+id:'signature',
+title:'⭐ Signature',
+items:[
+['肉骨茶','Bak Kut Teh'],
+['椰子鸡','Coconut Chicken'],
+['姜葱煎鱼','Ginger Scallion Fish'],
+['Miso Salmon','Miso Salmon'],
+['Bibimbap','Bibimbap'],
+['红烧豆腐','Braised Tofu'],
+['番茄煎蛋','Tomato Omelette']
+]
+},
 {
 id:'eggs',
-icon:'🥚',
-title:'🥚 蛋类 Eggs',
+title:'蛋类 Eggs',
 items:[
 ['丝瓜炒蛋','Luffa Egg'],
 ['番茄煎蛋','Tomato Omelette'],
@@ -27,8 +39,7 @@ items:[
 },
 {
 id:'tofu',
-icon:'🧈',
-title:'🧈 豆腐类 Tofu',
+title:'豆腐类 Tofu',
 items:[
 ['红烧豆腐','Braised Tofu'],
 ['红烧豆腐荷包蛋','Braised Tofu Egg'],
@@ -45,8 +56,7 @@ items:[
 },
 {
 id:'veg',
-icon:'🥬',
-title:'🥬 菜类 Vegetables',
+title:'菜类 Vegetables',
 items:[
 ['油麦','Yau Mak'],
 ['芥兰','Chinese Kale'],
@@ -81,8 +91,7 @@ items:[
 },
 {
 id:'meat',
-icon:'🍖',
-title:'🍖 肉类 Meat & Seafood',
+title:'肉类 Meat & Seafood',
 items:[
 ['姜葱煎鱼','Ginger Scallion Fish'],
 ['豆豉苦瓜猪肉','Pork with Bitter Gourd'],
@@ -101,8 +110,7 @@ items:[
 },
 {
 id:'soup',
-icon:'🍲',
-title:'🍲 汤类 Soup & Hot Pot',
+title:'汤类 Soup & Hot Pot',
 items:[
 ['无水鸡蔬菜锅','Waterless Chicken Pot'],
 ['Mille-Feuille Nabe','Mille-Feuille Nabe'],
@@ -124,8 +132,7 @@ items:[
 },
 {
 id:'rice',
-icon:'🍚',
-title:'🍚 饭面 Rice & Noodles',
+title:'饭面 Rice & Noodles',
 items:[
 ['豆角饭','Long Bean Rice'],
 ['麻油鸡饭','Sesame Chicken Rice'],
@@ -143,328 +150,244 @@ items:[
 }
 ];
 
-function malaysiaReset() {
+const menu = document.getElementById('menu');
 
-  let state = JSON.parse(
-    localStorage.getItem('ssf-family')
-  ) || {
-    users: ['Guest'],
-    currentUser: 'Guest',
-    selections: {},
-    resetDate: ''
-  };
+let cart = JSON.parse(
+  localStorage.getItem('ssf-cart')
+) || [];
 
-  const now = new Date(
-    new Date().toLocaleString(
-      'en-US',
-      {
-        timeZone: 'Asia/Kuala_Lumpur'
-      }
-    )
-  );
-
-  const today =
-    now.toISOString().slice(0, 10);
-
-  if (
-    now.getHours() >= 20 &&
-    state.resetDate !== today
-  ) {
-
-    state.selections = {};
-
-    state.resetDate = today;
-
-    localStorage.setItem(
-      'ssf-family',
-      JSON.stringify(state)
-    );
-
-  }
-
-  return state;
-}
-
-let state = malaysiaReset();
-
-function save() {
-
+function saveCart(){
   localStorage.setItem(
-    'ssf-family',
-    JSON.stringify(state)
+    'ssf-cart',
+    JSON.stringify(cart)
+  );
+}
+
+function isSelected(cn){
+  return cart.some(
+    item => item.cn === cn
+  );
+}
+
+function removeItem(cn){
+
+  cart = cart.filter(
+    item => item.cn !== cn
   );
 
+  saveCart();
+  updateCart();
+
+  render(
+    document.getElementById('search').value
+  );
 }
 
-function refreshUsers() {
+function toggleItem(cn,en){
 
-  userSelect.innerHTML =
-    state.users.map(
-      u =>
-      `<option ${
-        u === state.currentUser
-          ? 'selected'
-          : ''
-      }>${u}</option>`
-    ).join('');
+  const index = cart.findIndex(
+    item => item.cn === cn
+  );
 
-}
-
-function selected(dish) {
-
-  return (
-    state.selections[
-      state.currentUser
-    ] || []
-  ).includes(dish);
-
-}
-
-function toggleDish(dish) {
-
-  state.selections[
-    state.currentUser
-  ] ||= [];
-
-  const i =
-    state.selections[
-      state.currentUser
-    ].indexOf(dish);
-
-  if (i > -1) {
-
-    state.selections[
-      state.currentUser
-    ].splice(i, 1);
-
-  } else {
-
-    state.selections[
-      state.currentUser
-    ].push(dish);
-
+  if(index >= 0){
+    cart.splice(index,1);
+  }else{
+    cart.push({
+      cn,
+      en
+    });
   }
 
-  save();
+  saveCart();
 
-  render();
+  updateCart();
 
-  renderSidebar();
+  render(
+    document.getElementById('search').value
+  );
 }
 
-window.toggleDish = toggleDish;
+function updateCart(){
 
-function render(filter = '') {
+  const cartCount =
+    document.getElementById('cartCount');
 
-  menu.innerHTML = '';
+  const cartItems =
+    document.getElementById('cartItems');
 
-  sections.forEach(sec => {
+  cartCount.textContent = cart.length;
 
-    sec.items
-      .filter(
-        i =>
-        (i[0] + i[1])
-          .toLowerCase()
-          .includes(
-            filter.toLowerCase()
-          )
-      )
-      .forEach(i => {
+  if(cart.length === 0){
 
-        menu.innerHTML += `
-          <div
-            class="card ${
-              selected(i[0])
-                ? 'selected-card'
-                : ''
-            }"
-            onclick="toggleDish('${i[0]}')"
-          >
-            <b>${i[0]}</b>
-            <br>
-            ${i[1]}
-          </div>
-        `;
+    cartItems.innerHTML = `
+      <div class="empty-cart">
+        No dishes selected 🍲
+      </div>
+    `;
 
-      });
+    return;
+  }
+
+  cartItems.innerHTML = '';
+
+  cart.forEach(item => {
+
+    const row =
+      document.createElement('div');
+
+    row.className = 'cart-item';
+
+    row.innerHTML = `
+      <div class="cart-info">
+        <strong>${item.cn}</strong>
+        <br>
+        <small>${item.en}</small>
+      </div>
+
+      <button class="remove-btn">
+        ✕
+      </button>
+    `;
+
+    row.querySelector('.remove-btn')
+      .addEventListener(
+        'click',
+        () => removeItem(item.cn)
+      );
+
+    cartItems.appendChild(row);
 
   });
 
 }
 
-function renderSidebar() {
+function render(filter=''){
 
-  const view =
-    document
-      .querySelector(
-        '.tab.active'
-      )
-      .dataset.view;
+  menu.innerHTML='';
 
-  if (view === 'family') {
+  sections.forEach(section=>{
 
-    sidebarContent.innerHTML =
-      Object.entries(
-        state.selections
-      )
-      .map(
-        ([u, d]) => `
-          <div class="section">
-            <b>👤 ${u}</b>
-            <br>
-            ${d.join('<br>')}
-          </div>
-        `
-      )
-      .join('');
-
-  } else {
-
-    const map = {};
-
-    Object.entries(
-      state.selections
-    ).forEach(
-      ([u, dishes]) => {
-
-        dishes.forEach(d => {
-
-          map[d] =
-            map[d] || [];
-
-          map[d].push(u);
-
-        });
-
-      }
+    const items = section.items.filter(
+      item =>
+        (item[0] + item[1])
+        .toLowerCase()
+        .includes(filter.toLowerCase())
     );
 
-    sidebarContent.innerHTML =
-      Object.entries(map)
-      .map(
-        ([dish, users]) => `
-          <div class="section">
-            <b>${dish}</b>
-            <br>
+    if(!items.length) return;
 
-            ${users.map(
-              u => `
-                <span class="chip">
-                  👤 ${u}
-                </span>
+    const sec =
+      document.createElement('section');
+
+    sec.className='section';
+    sec.id=section.id;
+
+    sec.innerHTML=`
+      <h2>${section.title}</h2>
+
+      <div class="grid">
+
+        ${items.map(item=>`
+
+          <div
+            class="card ${
+              isSelected(item[0])
+              ? 'selected-card'
+              : ''
+            }"
+
+            onclick="
+              toggleItem(
+                '${item[0]}',
+                '${item[1]}'
+              )
+            "
+          >
+
+            <div class="cn">
+              ${item[0]}
+            </div>
+
+            <div class="en">
+              ${item[1]}
+            </div>
+
+            ${
+              isSelected(item[0])
+              ? `
+                <div class="selected-badge">
+                  ✓ Selected
+                </div>
               `
-            ).join('')}
-          </div>
-        `
-      )
-      .join('');
+              : ''
+            }
 
-  }
+          </div>
+
+        `).join('')}
+
+      </div>
+    `;
+
+    menu.appendChild(sec);
+
+  });
 
 }
 
-refreshUsers();
-
-render();
-
-renderSidebar();
-
-search.oninput =
-  e => render(
-    e.target.value
+document
+  .getElementById('search')
+  .addEventListener(
+    'input',
+    e => render(e.target.value)
   );
 
-userSelect.onchange =
-  e => {
+const sidebar =
+  document.getElementById('sidebar');
 
-    state.currentUser =
-      e.target.value;
-
-    save();
-
-    render();
-
-  };
-
-addUserBtn.onclick =
-  () => {
-
-    const n =
-      prompt(
-        'Family member name'
-      );
-
-    if (n) {
-
-      if (
-        !state.users.includes(n)
-      ) {
-
-        state.users.push(n);
-
-      }
-
-      state.currentUser = n;
-
-      save();
-
-      refreshUsers();
-
-      render();
-
-    }
-
-  };
-
-openSidebar.onclick =
-  () => {
-
-    sidebar.classList.add(
-      'open'
-    );
-
-    overlay.classList.add(
-      'show'
-    );
-
-  };
-
-overlay.onclick =
-  () => {
-
-    sidebar.classList.remove(
-      'open'
-    );
-
-    overlay.classList.remove(
-      'show'
-    );
-
-  };
+const overlay =
+  document.getElementById('overlay');
 
 document
-  .querySelectorAll('.tab')
-  .forEach(t =>
+  .getElementById('cartBtn')
+  .addEventListener(
+    'click',
+    () => {
 
-    t.onclick = () => {
-
-      document
-        .querySelectorAll(
-          '.tab'
-        )
-        .forEach(
-          x =>
-            x.classList.remove(
-              'active'
-            )
-        );
-
-      t.classList.add(
+      sidebar.classList.add(
         'active'
       );
 
-      renderSidebar();
+      overlay.classList.add(
+        'active'
+      );
 
     }
-
   );
+
+function closeSidebar(){
+
+  sidebar.classList.remove(
+    'active'
+  );
+
+  overlay.classList.remove(
+    'active'
+  );
+
+}
+
+document
+  .getElementById('closeBtn')
+  .addEventListener(
+    'click',
+    closeSidebar
+  );
+
+overlay.addEventListener(
+  'click',
+  closeSidebar
+);
+
+render();
+updateCart();

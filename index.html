@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SSF Family Menu</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSF Cafe Menu</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-header">
+    <h2>🍲 Today's Selection</h2>
+    <button id="closeBtn">✕</button>
+  </div>
+  <div id="cartItems"></div>
+</div>
+
+<div id="overlay" class="overlay"></div>
+
 <header class="header">
-  <div class="brand">SSF Family Menu</div>
-  <input id="search" placeholder="Search dishes...">
-  <select id="userSelect"></select>
-  <button id="addUserBtn">+ Person</button>
-  <button id="sidebarBtn">🍲 Interest</button>
+  <div class="header-top">
+    <h1>SSF</h1>
+    <input id="search" placeholder="Search menu...">
+    <button id="cartBtn" class="cart-btn">🛒 <span id="cartCount">0</span></button>
+  </div>
+
+  <nav class="cats">
+    <a href="#signature">⭐ Signature</a>
+    <a href="#eggs">Eggs</a>
+    <a href="#tofu">Tofu</a>
+    <a href="#veg">Veg</a>
+    <a href="#meat">Meat</a>
+    <a href="#soup">Soup</a>
+    <a href="#rice">Rice</a>
+  </nav>
 </header>
 
 <div id="menu"></div>
-
-<div id="overlay" class="overlay"></div>
-<aside id="sidebar" class="sidebar">
-  <div class="tabs">
-    <button class="tab active" data-tab="dishes">Dishes</button>
-    <button class="tab" data-tab="family">Family</button>
-  </div>
-  <div id="sidebarContent"></div>
-</aside>
 
 <script src="script.js"></script>
 </body>
