@@ -1,20 +1,8 @@
-const sections=[
-{
-id:'signature',
-title:'⭐ Signature',
-items:[
-['肉骨茶','Bak Kut Teh'],
-['椰子鸡','Coconut Chicken'],
-['姜葱煎鱼','Ginger Scallion Fish'],
-['Miso Salmon','Miso Salmon'],
-['Bibimbap','Bibimbap'],
-['红烧豆腐','Braised Tofu'],
-['番茄煎蛋','Tomato Omelette']
-]
-},
+const sections = [
 {
 id:'eggs',
-title:'蛋类 Eggs',
+icon:'🥚',
+title:'🥚 蛋类 Eggs',
 items:[
 ['丝瓜炒蛋','Luffa Egg'],
 ['番茄煎蛋','Tomato Omelette'],
@@ -39,7 +27,8 @@ items:[
 },
 {
 id:'tofu',
-title:'豆腐类 Tofu',
+icon:'🧈',
+title:'🧈 豆腐类 Tofu',
 items:[
 ['红烧豆腐','Braised Tofu'],
 ['红烧豆腐荷包蛋','Braised Tofu Egg'],
@@ -56,7 +45,8 @@ items:[
 },
 {
 id:'veg',
-title:'菜类 Vegetables',
+icon:'🥬',
+title:'🥬 菜类 Vegetables',
 items:[
 ['油麦','Yau Mak'],
 ['芥兰','Chinese Kale'],
@@ -91,7 +81,8 @@ items:[
 },
 {
 id:'meat',
-title:'肉类 Meat & Seafood',
+icon:'🍖',
+title:'🍖 肉类 Meat & Seafood',
 items:[
 ['姜葱煎鱼','Ginger Scallion Fish'],
 ['豆豉苦瓜猪肉','Pork with Bitter Gourd'],
@@ -110,7 +101,8 @@ items:[
 },
 {
 id:'soup',
-title:'汤类 Soup & Hot Pot',
+icon:'🍲',
+title:'🍲 汤类 Soup & Hot Pot',
 items:[
 ['无水鸡蔬菜锅','Waterless Chicken Pot'],
 ['Mille-Feuille Nabe','Mille-Feuille Nabe'],
@@ -132,7 +124,8 @@ items:[
 },
 {
 id:'rice',
-title:'饭面 Rice & Noodles',
+icon:'🍚',
+title:'🍚 饭面 Rice & Noodles',
 items:[
 ['豆角饭','Long Bean Rice'],
 ['麻油鸡饭','Sesame Chicken Rice'],
@@ -150,244 +143,328 @@ items:[
 }
 ];
 
-const menu = document.getElementById('menu');
+function malaysiaReset() {
 
-let cart = JSON.parse(
-  localStorage.getItem('ssf-cart')
-) || [];
+  let state = JSON.parse(
+    localStorage.getItem('ssf-family')
+  ) || {
+    users: ['Guest'],
+    currentUser: 'Guest',
+    selections: {},
+    resetDate: ''
+  };
 
-function saveCart(){
-  localStorage.setItem(
-    'ssf-cart',
-    JSON.stringify(cart)
-  );
-}
-
-function isSelected(cn){
-  return cart.some(
-    item => item.cn === cn
-  );
-}
-
-function removeItem(cn){
-
-  cart = cart.filter(
-    item => item.cn !== cn
+  const now = new Date(
+    new Date().toLocaleString(
+      'en-US',
+      {
+        timeZone: 'Asia/Kuala_Lumpur'
+      }
+    )
   );
 
-  saveCart();
-  updateCart();
+  const today =
+    now.toISOString().slice(0, 10);
 
-  render(
-    document.getElementById('search').value
-  );
-}
+  if (
+    now.getHours() >= 20 &&
+    state.resetDate !== today
+  ) {
 
-function toggleItem(cn,en){
+    state.selections = {};
 
-  const index = cart.findIndex(
-    item => item.cn === cn
-  );
+    state.resetDate = today;
 
-  if(index >= 0){
-    cart.splice(index,1);
-  }else{
-    cart.push({
-      cn,
-      en
-    });
-  }
-
-  saveCart();
-
-  updateCart();
-
-  render(
-    document.getElementById('search').value
-  );
-}
-
-function updateCart(){
-
-  const cartCount =
-    document.getElementById('cartCount');
-
-  const cartItems =
-    document.getElementById('cartItems');
-
-  cartCount.textContent = cart.length;
-
-  if(cart.length === 0){
-
-    cartItems.innerHTML = `
-      <div class="empty-cart">
-        No dishes selected 🍲
-      </div>
-    `;
-
-    return;
-  }
-
-  cartItems.innerHTML = '';
-
-  cart.forEach(item => {
-
-    const row =
-      document.createElement('div');
-
-    row.className = 'cart-item';
-
-    row.innerHTML = `
-      <div class="cart-info">
-        <strong>${item.cn}</strong>
-        <br>
-        <small>${item.en}</small>
-      </div>
-
-      <button class="remove-btn">
-        ✕
-      </button>
-    `;
-
-    row.querySelector('.remove-btn')
-      .addEventListener(
-        'click',
-        () => removeItem(item.cn)
-      );
-
-    cartItems.appendChild(row);
-
-  });
-
-}
-
-function render(filter=''){
-
-  menu.innerHTML='';
-
-  sections.forEach(section=>{
-
-    const items = section.items.filter(
-      item =>
-        (item[0] + item[1])
-        .toLowerCase()
-        .includes(filter.toLowerCase())
+    localStorage.setItem(
+      'ssf-family',
+      JSON.stringify(state)
     );
 
-    if(!items.length) return;
+  }
 
-    const sec =
-      document.createElement('section');
+  return state;
+}
 
-    sec.className='section';
-    sec.id=section.id;
+let state = malaysiaReset();
 
-    sec.innerHTML=`
-      <h2>${section.title}</h2>
+function save() {
 
-      <div class="grid">
+  localStorage.setItem(
+    'ssf-family',
+    JSON.stringify(state)
+  );
 
-        ${items.map(item=>`
+}
 
+function refreshUsers() {
+
+  userSelect.innerHTML =
+    state.users.map(
+      u =>
+      `<option ${
+        u === state.currentUser
+          ? 'selected'
+          : ''
+      }>${u}</option>`
+    ).join('');
+
+}
+
+function selected(dish) {
+
+  return (
+    state.selections[
+      state.currentUser
+    ] || []
+  ).includes(dish);
+
+}
+
+function toggleDish(dish) {
+
+  state.selections[
+    state.currentUser
+  ] ||= [];
+
+  const i =
+    state.selections[
+      state.currentUser
+    ].indexOf(dish);
+
+  if (i > -1) {
+
+    state.selections[
+      state.currentUser
+    ].splice(i, 1);
+
+  } else {
+
+    state.selections[
+      state.currentUser
+    ].push(dish);
+
+  }
+
+  save();
+
+  render();
+
+  renderSidebar();
+}
+
+window.toggleDish = toggleDish;
+
+function render(filter = '') {
+
+  menu.innerHTML = '';
+
+  sections.forEach(sec => {
+
+    sec.items
+      .filter(
+        i =>
+        (i[0] + i[1])
+          .toLowerCase()
+          .includes(
+            filter.toLowerCase()
+          )
+      )
+      .forEach(i => {
+
+        menu.innerHTML += `
           <div
             class="card ${
-              isSelected(item[0])
-              ? 'selected-card'
-              : ''
+              selected(i[0])
+                ? 'selected-card'
+                : ''
             }"
-
-            onclick="
-              toggleItem(
-                '${item[0]}',
-                '${item[1]}'
-              )
-            "
+            onclick="toggleDish('${i[0]}')"
           >
-
-            <div class="cn">
-              ${item[0]}
-            </div>
-
-            <div class="en">
-              ${item[1]}
-            </div>
-
-            ${
-              isSelected(item[0])
-              ? `
-                <div class="selected-badge">
-                  ✓ Selected
-                </div>
-              `
-              : ''
-            }
-
+            <b>${i[0]}</b>
+            <br>
+            ${i[1]}
           </div>
+        `;
 
-        `).join('')}
-
-      </div>
-    `;
-
-    menu.appendChild(sec);
+      });
 
   });
 
 }
 
-document
-  .getElementById('search')
-  .addEventListener(
-    'input',
-    e => render(e.target.value)
-  );
+function renderSidebar() {
 
-const sidebar =
-  document.getElementById('sidebar');
+  const view =
+    document
+      .querySelector(
+        '.tab.active'
+      )
+      .dataset.view;
 
-const overlay =
-  document.getElementById('overlay');
+  if (view === 'family') {
 
-document
-  .getElementById('cartBtn')
-  .addEventListener(
-    'click',
-    () => {
+    sidebarContent.innerHTML =
+      Object.entries(
+        state.selections
+      )
+      .map(
+        ([u, d]) => `
+          <div class="section">
+            <b>👤 ${u}</b>
+            <br>
+            ${d.join('<br>')}
+          </div>
+        `
+      )
+      .join('');
 
-      sidebar.classList.add(
-        'active'
-      );
+  } else {
 
-      overlay.classList.add(
-        'active'
-      );
+    const map = {};
 
-    }
-  );
+    Object.entries(
+      state.selections
+    ).forEach(
+      ([u, dishes]) => {
 
-function closeSidebar(){
+        dishes.forEach(d => {
 
-  sidebar.classList.remove(
-    'active'
-  );
+          map[d] =
+            map[d] || [];
 
-  overlay.classList.remove(
-    'active'
-  );
+          map[d].push(u);
+
+        });
+
+      }
+    );
+
+    sidebarContent.innerHTML =
+      Object.entries(map)
+      .map(
+        ([dish, users]) => `
+          <div class="section">
+            <b>${dish}</b>
+            <br>
+
+            ${users.map(
+              u => `
+                <span class="chip">
+                  👤 ${u}
+                </span>
+              `
+            ).join('')}
+          </div>
+        `
+      )
+      .join('');
+
+  }
 
 }
 
-document
-  .getElementById('closeBtn')
-  .addEventListener(
-    'click',
-    closeSidebar
-  );
-
-overlay.addEventListener(
-  'click',
-  closeSidebar
-);
+refreshUsers();
 
 render();
-updateCart();
+
+renderSidebar();
+
+search.oninput =
+  e => render(
+    e.target.value
+  );
+
+userSelect.onchange =
+  e => {
+
+    state.currentUser =
+      e.target.value;
+
+    save();
+
+    render();
+
+  };
+
+addUserBtn.onclick =
+  () => {
+
+    const n =
+      prompt(
+        'Family member name'
+      );
+
+    if (n) {
+
+      if (
+        !state.users.includes(n)
+      ) {
+
+        state.users.push(n);
+
+      }
+
+      state.currentUser = n;
+
+      save();
+
+      refreshUsers();
+
+      render();
+
+    }
+
+  };
+
+openSidebar.onclick =
+  () => {
+
+    sidebar.classList.add(
+      'open'
+    );
+
+    overlay.classList.add(
+      'show'
+    );
+
+  };
+
+overlay.onclick =
+  () => {
+
+    sidebar.classList.remove(
+      'open'
+    );
+
+    overlay.classList.remove(
+      'show'
+    );
+
+  };
+
+document
+  .querySelectorAll('.tab')
+  .forEach(t =>
+
+    t.onclick = () => {
+
+      document
+        .querySelectorAll(
+          '.tab'
+        )
+        .forEach(
+          x =>
+            x.classList.remove(
+              'active'
+            )
+        );
+
+      t.classList.add(
+        'active'
+      );
+
+      renderSidebar();
+
+    }
+
+  );
