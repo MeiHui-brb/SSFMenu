@@ -1,8 +1,8 @@
 
 :root{
- --primary:##5700b8;
+ --primary:#5700b8;
  --secondary:#F8FFFD;
- --accent:##9fb800;
+ --accent:#9fb800;
  --dark:#111827;
  --text:#1F2937;
 }
@@ -355,12 +355,3 @@ body{
   color:#6B7280;
 }
 
-.cart-category{
-  position:sticky;
-  top:0;
-  padding:10px 16px;
-  font-weight:700;
-  background:#F3F4F6;
-  border-bottom:1px solid #ddd;
-  color:#111827;
-}
