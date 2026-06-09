@@ -132,16 +132,14 @@
     "id":"soup",
     "title":"汤类 Soup & Hot Pot",
     "items":[
+      ["椰子鸡","Coconut Chicken"],
       ["无水鸡蔬菜锅","Waterless Chicken Pot"],
       ["Mille-Feuille Nabe","Mille-Feuille Nabe"],
-      ["肉骨茶","Bak Kut Teh"],
-      ["椰子鸡","Coconut Chicken"],
-      ["丝瓜蛋面线","Luffa Egg Mee Sua"],
-      ["元菜蛋面线","Yuan Choy Mee Sua"],
       ["ABC汤","ABC Soup"],
       ["老王瓜汤","Old Cucumber Soup"],
       ["花生莲藕汤","Peanut Lotus Soup"],
       ["Chanko Nabe","Chanko Nabe"],
+      ["肉骨茶","Bak Kut Teh"],
       ["Miso汤","Miso Soup"],
       ["Doenjang-jjigae","Korean Soybean Stew"]
     ]
@@ -151,14 +149,14 @@
     "title":"单座饭 Rice",
     "items":[
       ["豆角饭","Long Bean Rice"],
-      ["麻油鸡饭","Sesame Chicken Rice"],
-      ["牛蒡冬菇饭","Burdock Mushroom Rice"],
       ["Miso Salmon Rice","Miso Salmon Rice"],
-      ["炒饭","Fried Rice"],
       ["青江菜饭","Choy Sum Rice"],
       ["日本咖喱饭","Japanese Curry Rice"],
       ["Pad Kra Pao","Pad Kra Pao"],
       ["Bibimbap","Bibimbap"],
+      ["麻油鸡饭","Sesame Chicken Rice"],
+      ["炒饭","Fried Rice"],
+      ["牛蒡冬菇饭","Burdock Mushroom Rice"],
       ["Tamagodon","Tamagodon"]
     ]
   },
@@ -166,10 +164,12 @@
     "id":"noodle",
     "title":"单座面 Noodles",
     "items":[
+      ["番茄面线","Tomato Mee Sua"],
       ["姜蛋面线","Ginger Egg Mee Sua"],
-      ["黄酒姜蛋面线","Rice Wine Ginger Mee Sua"],
+      ["丝瓜蛋面线","Luffa Egg Mee Sua"],
+      ["元菜蛋面线","Yuan Choy Mee Sua"],
       ["南瓜汤面","Pumpkin Soup Noodles"],
-      ["番茄拌面","Tomato Noodles"],
+      ["黄酒姜蛋面线","Rice Wine Ginger Mee Sua"],
       ["Janchi Guksu","Janchi Guksu"],
       ["Tomato Pasta","Tomato Pasta"]
     ]
