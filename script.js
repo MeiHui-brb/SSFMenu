@@ -269,37 +269,95 @@ function updateCart(){
 
   cartItems.innerHTML = '';
 
+  const grouped = {};
+  
   cart.forEach(item => {
+  
+    const section =
+      getItemSection(item.cn);
+  
+    if(!section) return;
+  
+    if(!grouped[section.id]){
+      grouped[section.id] = [];
+    }
+  
+    grouped[section.id].push(item);
+  
+  });
+  sections.forEach(section => {
 
-    const row =
-      document.createElement('div');
+  const items =
+    grouped[section.id];
 
-    row.className = 'cart-item';
+  if(!items || !items.length)
+    return;
 
-	row.innerHTML = `
-	  <button class="remove-btn">
-		✕
-	  </button>
+  const header =
+    document.createElement('div');
 
-	  <div class="cart-info">
-		<strong>
+  header.className =
+    'cart-category';
+
+  header.innerHTML =
+    `${categoryMeta[section.id].icon}
+     ${section.title}`;
+
+  cartItems.appendChild(
+    header
+  );
+
+  items
+    .sort((a,b)=>
+      a.cn.localeCompare(
+        b.cn,
+        'zh'
+      )
+    )
+    .forEach(item => {
+
+      const row =
+        document.createElement('div');
+
+      row.className =
+        'cart-item';
+
+      row.innerHTML = `
+        <button class="remove-btn">
+          ✕
+        </button>
+
+        <div class="cart-info">
+         <strong>
 		  ${getItemCategory(item.cn).icon}
 		  ${item.cn}
 		</strong>
-		<br>
-		<small>${item.en}</small>
-	  </div>
-	`;
+          <br>
+          <small>
+            ${item.en}
+          </small>
+        </div>
+      `;
 
-    row.querySelector('.remove-btn')
-      .addEventListener(
-        'click',
-        () => removeItem(item.cn)
+      row
+        .querySelector(
+          '.remove-btn'
+        )
+        .addEventListener(
+          'click',
+          () =>
+            removeItem(
+              	item.cn
+			  )
+        );
+
+      cartItems.appendChild(
+        row
       );
 
-    cartItems.appendChild(row);
+    });
 
-  });
+});
 
 }
 
@@ -320,6 +378,24 @@ function getItemCategory(cn){
   return {
     icon:'🍽️'
   };
+
+}
+
+function getItemSection(cn){
+
+  for(const section of sections){
+
+    if(
+      section.items.some(
+        item => item[0] === cn
+      )
+    ){
+      return section;
+    }
+
+  }
+
+  return null;
 
 }
 
