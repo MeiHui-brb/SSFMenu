@@ -23,7 +23,12 @@
 	  "rice": {
 		"icon": "🍚",
 		"class": "rice-title"
+	  },
+	  "noodle": {
+		"icon": "🍜",
+		"class": "noodle-title"
 	  }
+	  
 	} ,
    "sections": [
   {
@@ -143,13 +148,9 @@
   },
   {
     "id":"rice",
-    "title":"饭面 Rice & Noodles",
+    "title":"单座饭 Rice",
     "items":[
       ["豆角饭","Long Bean Rice"],
-      ["姜蛋面线","Ginger Egg Mee Sua"],
-      ["黄酒姜蛋面线","Rice Wine Ginger Mee Sua"],
-      ["南瓜汤面","Pumpkin Soup Noodles"],
-      ["番茄拌面","Tomato Noodles"],
       ["麻油鸡饭","Sesame Chicken Rice"],
       ["牛蒡冬菇饭","Burdock Mushroom Rice"],
       ["Miso Salmon Rice","Miso Salmon Rice"],
@@ -158,7 +159,17 @@
       ["日本咖喱饭","Japanese Curry Rice"],
       ["Pad Kra Pao","Pad Kra Pao"],
       ["Bibimbap","Bibimbap"],
-      ["Tamagodon","Tamagodon"],
+      ["Tamagodon","Tamagodon"]
+    ]
+  },
+  {
+    "id":"noodle",
+    "title":"单座面 Noodles",
+    "items":[
+      ["姜蛋面线","Ginger Egg Mee Sua"],
+      ["黄酒姜蛋面线","Rice Wine Ginger Mee Sua"],
+      ["南瓜汤面","Pumpkin Soup Noodles"],
+      ["番茄拌面","Tomato Noodles"],
       ["Janchi Guksu","Janchi Guksu"],
       ["Tomato Pasta","Tomato Pasta"]
     ]

@@ -164,6 +164,16 @@ body{
   border-radius:12px;
 }
 
+/* Noodle */
+
+.noodle-title{
+  background:#fff8e6;
+  border-left:5px solid #f39c12;
+  color:#d35400;
+  padding:10px 15px;
+  border-radius:12px;
+}
+
 /* =========================
    GRID
 ========================= */
@@ -260,6 +270,17 @@ body{
 
 #rice .card.selected{
   background:#16a085 !important;
+}
+
+/* Noodle */
+
+#noodle .card{
+  background:#fff5e8;
+  border:1px solid #f39c12;
+}
+
+#noodle .card.selected{
+  background:#d35400 !important;
 }
 
 .card.selected .cn,
