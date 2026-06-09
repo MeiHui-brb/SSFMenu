@@ -321,53 +321,16 @@ function render(filter=''){
     sec.className='section';
     sec.id=section.id;
 
-    sec.innerHTML=`
-      <h2>${section.title}</h2>
+    
+    const meta = categoryMeta[section.id];
 
-      <div class="grid">
+sec.innerHTML=`
+  <h2 class="${meta.class}">
+    ${meta.icon} ${section.title}
+  </h2>
 
-        ${items.map(item=>`
-
-          <div
-            class="card ${
-              isSelected(item[0])
-              ? 'selected-card'
-              : ''
-            }"
-
-            onclick="
-              toggleItem(
-                '${item[0]}',
-                '${item[1]}'
-              )
-            "
-          >
-
-            <div class="cn">
-              ${item[0]}
-            </div>
-
-            <div class="en">
-              ${item[1]}
-            </div>
-
-            ${
-              isSelected(item[0])
-              ? `
-                <div class="selected-badge">
-                  ✓ Selected
-                </div>
-              `
-              : ''
-            }
-
-          </div>
-
-        `).join('')}
-
-      </div>
-    `;
-
+  <div class="grid">
+  
     menu.appendChild(sec);
 
   });

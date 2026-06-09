@@ -80,31 +80,59 @@ body{
 }
 
 .signature-title{
- border-left:5px solid #00B894;
+  background:#E8FFF7;
+  border-left:5px solid #00B894;
+  color:#00B894;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 .eggs-title{
- border-left:5px solid #F59E0B;
+  background:#FFF8E6;
+  border-left:5px solid #F59E0B;
+  color:#F59E0B;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 .tofu-title{
- border-left:5px solid #A78BFA;
+  background:#F4EEFF;
+  border-left:5px solid #A78BFA;
+  color:#7C3AED;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 .veg-title{
- border-left:5px solid #10B981;
+  background:#ECFFF3;
+  border-left:5px solid #10B981;
+  color:#10B981;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 .meat-title{
- border-left:5px solid #EF4444;
+  background:#FFF0F0;
+  border-left:5px solid #EF4444;
+  color:#EF4444;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 .soup-title{
- border-left:5px solid #3B82F6;
+  background:#EEF6FF;
+  border-left:5px solid #3B82F6;
+  color:#3B82F6;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 .rice-title{
- border-left:5px solid #F97316;
+  background:#FFF4E8;
+  border-left:5px solid #F97316;
+  color:#F97316;
+  padding:10px 15px;
+  border-radius:12px;
 }
 .section h2{
  color:var(--primary);
