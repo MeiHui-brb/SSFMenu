@@ -158,10 +158,15 @@ body{
 .card:hover{transform:translateY(-2px)}
 .card:active{transform:scale(.98)}
 
-.selected-card{
- border:2px solid var(--primary);
- background:#FFF8F0;
- box-shadow:0 0 0 1px var(--primary),0 8px 20px rgba(139,94,60,.15);
+.card.selected{
+ border:2px solid var(--primary) !important;
+ background:#FFF8F0 !important;
+ box-shadow:0 0 0 1px var(--primary),
+            0 8px 20px rgba(139,94,60,.15) !important;
+}
+
+.card.selected .cn{
+ color:var(--primary);
 }
 
 .cn{font-weight:700;font-size:1.1rem}
