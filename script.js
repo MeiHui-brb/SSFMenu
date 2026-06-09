@@ -20,8 +20,7 @@ items:[
 ['九层塔煎蛋','Thai Basil Omelette'],
 ['甜菜脯煎蛋','Preserved Radish Omelette'],
 ['姜丝煎荷包蛋','Ginger Fried Egg'],
-['姜酒煎荷包蛋','Ginger Wine Fried Egg'],
-['Mani菜炒蛋','Mani Vegetable Egg']
+['姜酒煎荷包蛋','Ginger Wine Fried Egg']
 ]
 },
 {
@@ -50,12 +49,13 @@ items:[
 ['番薯叶','Sweet Potato Leaves'],
 ['杂菜','Mixed Vegetables'],
 ['黄瓜炒菇','Cucumber Mushroom'],
-['Asparagus','Asparagus'],
+['元菜','Yuan Choy'],
 ['三杯茄子','Three Cup Eggplant'],
 ['四大天王','Four Heavenly Kings'],
 ['French Bean','French Bean'],
 ['Broccoli Mushroom','Broccoli Mushroom'],
 ['小白菜','Baby Bok Choy'],
+['Asparagus','Asparagus'],
 ['Cauliflower','Cauliflower'],
 ['豆豉苦瓜','Black Bean Bitter Gourd'],
 ['豆瓣焖苦瓜','Braised Bitter Gourd'],
@@ -64,8 +64,8 @@ items:[
 ['南瓜炒咖喱叶','Pumpkin Curry Leaf'],
 ['菠菜','Spinach'],
 ['白菜炒虾米','Cabbage with Dried Shrimp'],
+['Mani菜炒蛋','Mani Vegetable Egg']
 ['Baby Kailan','Baby Kailan'],
-['元菜','Yuan Choy'],
 ['帝王苗','Pea Shoots'],
 ['菇炒干辣椒','Mushroom Dry Chili'],
 ['杂菇药材','Herbal Mixed Mushroom'],
@@ -92,7 +92,7 @@ items:[
 ['煎五花肉','Pan Fried Pork Belly'],
 ['Butter Miso Salmon','Butter Miso Salmon'],
 ['潮州蒸鱼','Teochew Steamed Fish'],
-['咖喱叶煎鱼','Curry Leaf Fish']
+['咖喱叶煎鱼','Curry Leaf Fish'],
 ['臭豆肉碎','Petai minced meat']
 ]
 },
@@ -109,13 +109,9 @@ items:[
 ['ABC汤','ABC Soup'],
 ['老王瓜汤','Old Cucumber Soup'],
 ['花生莲藕汤','Peanut Lotus Soup'],
-['姜蛋面线','Ginger Egg Mee Sua'],
-['黄酒姜蛋面线','Rice Wine Ginger Mee Sua'],
-['Doenjang-jjigae','Korean Soybean Stew'],
-['南瓜汤面','Pumpkin Soup Noodles'],
-['番茄拌面','Tomato Noodles'],
 ['Chanko Nabe','Chanko Nabe'],
-['Miso汤','Miso Soup']
+['Miso汤','Miso Soup'],
+['Doenjang-jjigae','Korean Soybean Stew']
 ]
 },
 {
@@ -123,6 +119,10 @@ id:'rice',
 title:'饭面 Rice & Noodles',
 items:[
 ['豆角饭','Long Bean Rice'],
+['姜蛋面线','Ginger Egg Mee Sua'],
+['黄酒姜蛋面线','Rice Wine Ginger Mee Sua'],
+['南瓜汤面','Pumpkin Soup Noodles'],
+['番茄拌面','Tomato Noodles'],
 ['麻油鸡饭','Sesame Chicken Rice'],
 ['牛蒡冬菇饭','Burdock Mushroom Rice'],
 ['Miso Salmon Rice','Miso Salmon Rice'],
