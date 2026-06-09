@@ -5,7 +5,7 @@ let itemLookup = {};
 async function loadData(){
 
   const response =
-    await fetch('./menu.json');
+    await fetch('./data/menu.json');
 
   const data =
     await response.json();
