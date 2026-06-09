@@ -93,6 +93,7 @@ items:[
 ['Butter Miso Salmon','Butter Miso Salmon'],
 ['潮州蒸鱼','Teochew Steamed Fish'],
 ['咖喱叶煎鱼','Curry Leaf Fish']
+['臭豆肉碎','Petai minced meat']
 ]
 },
 {
