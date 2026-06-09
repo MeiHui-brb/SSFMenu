@@ -64,7 +64,7 @@ items:[
 ['南瓜炒咖喱叶','Pumpkin Curry Leaf'],
 ['菠菜','Spinach'],
 ['白菜炒虾米','Cabbage with Dried Shrimp'],
-['Mani菜炒蛋','Mani Vegetable Egg']
+['Mani菜炒蛋','Mani Vegetable Egg'],
 ['Baby Kailan','Baby Kailan'],
 ['帝王苗','Pea Shoots'],
 ['菇炒干辣椒','Mushroom Dry Chili'],
