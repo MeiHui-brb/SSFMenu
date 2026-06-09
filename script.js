@@ -435,7 +435,7 @@ document
     copyResults
   );
 
-function copyResults(){
+async function copyResults(){
 
   if(cart.length === 0){
     alert('No items selected yet.');
@@ -448,9 +448,9 @@ function copyResults(){
 
   try{
 
-    if(navigator.clipboard && window.isSecureContext){
-
-      navigator.clipboard.writeText(text);
+    if(navigator.clipboard){
+	  console.log(text);
+      await navigator.clipboard.writeText(text);
 
     }else{
 
@@ -482,7 +482,7 @@ function copyResults(){
 
     console.error(err);
 
-    alert('Copy failed');
+    alert('Copy failed: ' + err.message);
 
   }
 
