@@ -150,6 +150,54 @@ items:[
 }
 ];
 
+const categoryMeta={
+
+ signature:{
+  icon:'⭐',
+  class:'signature-title'
+ },
+
+ eggs:{
+  icon:'🥚',
+  class:'eggs-title'
+ },
+
+ tofu:{
+  icon:'🧈',
+  class:'tofu-title'
+ },
+
+ veg:{
+  icon:'🥬',
+  class:'veg-title'
+ },
+
+ meat:{
+  icon:'🍖',
+  class:'meat-title'
+ },
+
+ soup:{
+  icon:'🍲',
+  class:'soup-title'
+ },
+
+ rice:{
+  icon:'🍚',
+  class:'rice-title'
+ }
+
+};
+
+
+const meta=
+categoryMeta[section.id];
+
+<h2 class="${meta.class}">
+   ${meta.icon}
+   ${section.title}
+</h2>
+
 const menu = document.getElementById('menu');
 
 let cart = JSON.parse(
