@@ -276,17 +276,20 @@ function updateCart(){
 
     row.className = 'cart-item';
 
-    row.innerHTML = `
-      <div class="cart-info">
-        <strong>${item.cn}</strong>
-        <br>
-        <small>${item.en}</small>
-      </div>
+	row.innerHTML = `
+	  <button class="remove-btn">
+		✕
+	  </button>
 
-      <button class="remove-btn">
-        ✕
-      </button>
-    `;
+	  <div class="cart-info">
+		<strong>
+		  ${getItemCategory(item.cn).icon}
+		  ${item.cn}
+		</strong>
+		<br>
+		<small>${item.en}</small>
+	  </div>
+	`;
 
     row.querySelector('.remove-btn')
       .addEventListener(
@@ -297,6 +300,26 @@ function updateCart(){
     cartItems.appendChild(row);
 
   });
+
+}
+
+function getItemCategory(cn){
+
+  for(const section of sections){
+
+    if(
+      section.items.some(
+        item => item[0] === cn
+      )
+    ){
+      return categoryMeta[section.id];
+    }
+
+  }
+
+  return {
+    icon:'🍽️'
+  };
 
 }
 
