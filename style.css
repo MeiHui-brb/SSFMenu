@@ -79,14 +79,6 @@ body{
  scroll-margin-top:130px;
 }
 
-.signature-title{
-  background:#E8FFF7;
-  border-left:5px solid #00B894;
-  color:#00B894;
-  padding:10px 15px;
-  border-radius:12px;
-}
-
 .eggs-title{
   background:#FFF8E6;
   border-left:5px solid #F59E0B;
@@ -252,12 +244,6 @@ body{
   opacity:.9;
 }
 
-/* Signature */
-#signature .card{
-  background:#E8FFF7;
-  border:1px solid #B8F0DF;
-}
-
 /* Eggs */
 #eggs .card{
   background:#FFF8E6;
@@ -292,11 +278,6 @@ body{
 #rice .card{
   background:#FFF4E8;
   border:1px solid #FFD6AD;
-}
-/* Signature Selected */
-#signature .card.selected{
-  background:#00B894 !important;
-  border-color:#009A7C !important;
 }
 
 /* Eggs Selected */

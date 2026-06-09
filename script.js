@@ -1,18 +1,5 @@
 const sections=[
 {
-id:'signature',
-title:'⭐ Signature',
-items:[
-['肉骨茶','Bak Kut Teh'],
-['椰子鸡','Coconut Chicken'],
-['姜葱煎鱼','Ginger Scallion Fish'],
-['Miso Salmon','Miso Salmon'],
-['Bibimbap','Bibimbap'],
-['红烧豆腐','Braised Tofu'],
-['番茄煎蛋','Tomato Omelette']
-]
-},
-{
 id:'eggs',
 title:'蛋类 Eggs',
 items:[
@@ -152,11 +139,6 @@ items:[
 
 const categoryMeta={
 
- signature:{
-  icon:'⭐',
-  class:'signature-title'
- },
-
  eggs:{
   icon:'🥚',
   class:'eggs-title'
@@ -269,98 +251,61 @@ function updateCart(){
 
   cartItems.innerHTML = '';
 
-  const grouped = {};
-  
-  cart.forEach(item => {
-  
-    const section =
-      getItemSection(item.cn);
-  
-    if(!section) return;
-  
-    if(!grouped[section.id]){
-      grouped[section.id] = [];
+  const sortedCart = [...cart].sort((a,b) => {
+
+    const sectionA =
+      getItemSection(a.cn)?.id || '';
+
+    const sectionB =
+      getItemSection(b.cn)?.id || '';
+
+    if(sectionA !== sectionB){
+      return sectionA.localeCompare(sectionB);
     }
-  
-    grouped[section.id].push(item);
-  
+
+    return a.cn.localeCompare(
+      b.cn,
+      'zh'
+    );
+
   });
-  sections.forEach(section => {
 
-  const items =
-    grouped[section.id];
+  sortedCart.forEach(item => {
 
-  if(!items || !items.length)
-    return;
+    const row =
+      document.createElement('div');
 
-  const header =
-    document.createElement('div');
+    row.className = 'cart-item';
 
-  header.className =
-    'cart-category';
+    row.innerHTML = `
+      <button class="remove-btn">
+        ✕
+      </button>
 
-  header.innerHTML =
-    `${categoryMeta[section.id].icon}
-     ${section.title}`;
+      <div class="cart-info">
+        <strong>
+          ${getItemCategory(item.cn).icon}
+          ${item.cn}
+        </strong>
+        <br>
+        <small>
+          ${item.en}
+        </small>
+      </div>
+    `;
 
-  cartItems.appendChild(
-    header
-  );
-
-  items
-    .sort((a,b)=>
-      a.cn.localeCompare(
-        b.cn,
-        'zh'
-      )
-    )
-    .forEach(item => {
-
-      const row =
-        document.createElement('div');
-
-      row.className =
-        'cart-item';
-
-      row.innerHTML = `
-        <button class="remove-btn">
-          ✕
-        </button>
-
-        <div class="cart-info">
-         <strong>
-		  ${getItemCategory(item.cn).icon}
-		  ${item.cn}
-		</strong>
-          <br>
-          <small>
-            ${item.en}
-          </small>
-        </div>
-      `;
-
-      row
-        .querySelector(
-          '.remove-btn'
-        )
-        .addEventListener(
-          'click',
-          () =>
-            removeItem(
-              	item.cn
-			  )
-        );
-
-      cartItems.appendChild(
-        row
+    row
+      .querySelector('.remove-btn')
+      .addEventListener(
+        'click',
+        () => removeItem(item.cn)
       );
 
-    });
+    cartItems.appendChild(row);
 
-});
+  });
 
 }
-
 function getItemCategory(cn){
 
   for(const section of sections){
