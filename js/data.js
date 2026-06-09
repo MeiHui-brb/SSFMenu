@@ -4,8 +4,7 @@ let itemLookup = {};
 
 async function loadData(){
 
-  const response =
-    await fetch('data/menu.json');
+  const response = await fetch('data/menu.json');
 
   const data =
     await response.json();
@@ -29,4 +28,6 @@ async function loadData(){
 
   });
 
+  render();
+  updateCart();
 }
