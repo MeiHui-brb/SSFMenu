@@ -315,22 +315,34 @@ function render(filter=''){
 
     if(!items.length) return;
 
-    const sec =
-      document.createElement('section');
+    const sec = document.createElement('section');
 
-    sec.className='section';
-    sec.id=section.id;
+    sec.className = 'section';
+    sec.id = section.id;
 
-    
-    const meta = categoryMeta[section.id];
+    const meta = categoryMeta[section.id] || {
+      icon:'🍽️',
+      class:''
+    };
 
-sec.innerHTML=`
-  <h2 class="${meta.class}">
-    ${meta.icon} ${section.title}
-  </h2>
+    sec.innerHTML = `
+      <h2 class="${meta.class}">
+        ${meta.icon} ${section.title}
+      </h2>
 
-  <div class="grid">
-  
+      <div class="grid">
+        ${items.map(item => `
+          <div class="card"
+               onclick="toggleItem('${item[0]}','${item[1]}')">
+
+            <div class="cn">${item[0]}</div>
+            <div class="en">${item[1]}</div>
+
+          </div>
+        `).join('')}
+      </div>
+    `;
+
     menu.appendChild(sec);
 
   });
