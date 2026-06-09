@@ -189,15 +189,6 @@ const categoryMeta={
 
 };
 
-
-const meta=
-categoryMeta[section.id];
-
-<h2 class="${meta.class}">
-   ${meta.icon}
-   ${section.title}
-</h2>
-
 const menu = document.getElementById('menu');
 
 let cart = JSON.parse(
@@ -444,24 +435,39 @@ document
     copyResults
   );
 
-async function copyResults(){
+function copyResults(){
 
-  const items = Object
-    .values(votes)
-    .sort((a,b) => b.count - a.count);
-
-  if(items.length === 0){
+  if(cart.length === 0){
     alert('No items selected yet.');
     return;
   }
 
-  const text = items
+  const text = cart
     .map(item => item.cn)
     .join('\n');
 
   try{
 
-    await navigator.clipboard.writeText(text);
+    if(navigator.clipboard && window.isSecureContext){
+
+      navigator.clipboard.writeText(text);
+
+    }else{
+
+      const textarea =
+        document.createElement('textarea');
+
+      textarea.value = text;
+
+      document.body.appendChild(textarea);
+
+      textarea.select();
+
+      document.execCommand('copy');
+
+      textarea.remove();
+
+    }
 
     const btn =
       document.getElementById('copyBtn');
@@ -469,12 +475,14 @@ async function copyResults(){
     btn.textContent = '✅ Copied';
 
     setTimeout(() => {
-      btn.textContent = '📋 Copy Results';
+      btn.textContent = '📋 Copy';
     }, 2000);
 
   }catch(err){
 
-    alert('Unable to copy to clipboard');
+    console.error(err);
+
+    alert('Copy failed');
 
   }
 
