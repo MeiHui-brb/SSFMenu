@@ -289,9 +289,7 @@ function updateCart(){
           ${item.cn}
         </strong>
         <br>
-        <small>
-          ${item.en}
-        </small>
+        <small>${item.en}</small>
       </div>
     `;
 
@@ -305,25 +303,6 @@ function updateCart(){
     cartItems.appendChild(row);
 
   });
-
-}
-function getItemCategory(cn){
-
-  for(const section of sections){
-
-    if(
-      section.items.some(
-        item => item[0] === cn
-      )
-    ){
-      return categoryMeta[section.id];
-    }
-
-  }
-
-  return {
-    icon:'🍽️'
-  };
 
 }
 
