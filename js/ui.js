@@ -186,10 +186,16 @@ async function copyResults(){
 
   }
 
-  const text =
-    getSortedCart()
-      .map(item=>item.cn)
-      .join('\n');
+  const text = getSortedCart()
+  .map(item => {
+
+    const icon =
+      getItemCategory(item.cn).icon;
+
+    return `${icon} ${item.cn}`;
+
+  })
+  .join('\n');
 
   await navigator.clipboard
     .writeText(text);
