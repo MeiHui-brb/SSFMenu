@@ -2,9 +2,6 @@ async function init(){
 
   await loadData();
 
-  render();
-  updateCart();
-
   document
     .getElementById('search')
     .addEventListener(
