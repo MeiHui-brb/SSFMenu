@@ -1,7 +1,7 @@
 :root{
-  --primary:#5700b8;
+  --primary:#e74c3c;
   --secondary:#ecf0f1;
-  --accent:#9fb800;
+  --accent:#d35400;
   --dark:#2c3e50;
   --text:#34495e;
 }
@@ -68,7 +68,8 @@ body{
   gap:8px;
   overflow-x:auto;
   padding:10px 12px;
-  background:#34495e;
+  background:white;
+  border-bottom:1px solid #e5e7eb;
   scrollbar-width:none;
 }
 
@@ -383,6 +384,18 @@ body{
 .copy-btn:hover{
   background:#1abc9c;
 }
+
+/* =========================
+   CLEAR BUTTON
+========================= */
+
+.clear-btn{
+  width:calc(100% - 32px);
+  margin:0 16px 16px;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:#7f8c8d
 
 /* =========================
    OVERLAY

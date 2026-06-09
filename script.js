@@ -345,6 +345,13 @@ function getItemSection(cn){
 
 }
 
+document
+  .getElementById('clearBtn')
+  .addEventListener(
+    'click',
+    clearAll
+  );
+  
 function render(filter=''){
 
   menu.innerHTML='';
@@ -513,6 +520,32 @@ async function copyResults(){
     alert('Copy failed: ' + err.message);
 
   }
+
+}
+
+function clearAll(){
+
+  if(cart.length === 0){
+    return;
+  }
+
+  const confirmed = confirm(
+    'Clear all selected dishes?'
+  );
+
+  if(!confirmed){
+    return;
+  }
+
+  cart = [];
+
+  saveCart();
+
+  updateCart();
+
+  render(
+    document.getElementById('search').value
+  );
 
 }
 
