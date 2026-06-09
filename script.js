@@ -331,15 +331,23 @@ function render(filter=''){
       </h2>
 
       <div class="grid">
-        ${items.map(item => `
-          <div class="card"
-               onclick="toggleItem('${item[0]}','${item[1]}')">
+        ${items.map(item => {
 
-            <div class="cn">${item[0]}</div>
-            <div class="en">${item[1]}</div>
+  const selected = isSelected(item[0]);
 
-          </div>
-        `).join('')}
+  return `
+    <div class="card ${selected ? 'selected' : ''}"
+         onclick="toggleItem('${item[0]}','${item[1]}')">
+
+      <div class="cn">${item[0]}</div>
+      <div class="en">${item[1]}</div>
+
+      ${selected ? '<div class="selected-badge">✓ Selected</div>' : ''}
+
+    </div>
+  `;
+
+}).join('')}
       </div>
     `;
 
