@@ -306,6 +306,27 @@ function updateCart(){
 
 }
 
+function getItemCategory(cn){
+
+  for(const section of sections){
+
+    if(
+      section.items.some(
+        item => item[0] === cn
+      )
+    ){
+      return categoryMeta[section.id];
+    }
+
+  }
+
+  return {
+    icon:'🍽️',
+    class:''
+  };
+
+}
+
 function getItemSection(cn){
 
   for(const section of sections){

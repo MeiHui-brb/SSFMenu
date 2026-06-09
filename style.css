@@ -1,319 +1,264 @@
-
 :root{
- --primary:#5700b8;
- --secondary:#F8FFFD;
- --accent:#9fb800;
- --dark:#111827;
- --text:#1F2937;
+  --primary:#5700b8;
+  --secondary:#ecf0f1;
+  --accent:#9fb800;
+  --dark:#2c3e50;
+  --text:#34495e;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
- margin:0;
- font-family:system-ui,sans-serif;
- background:var(--secondary);
- color:var(--text);
+  margin:0;
+  font-family:system-ui,sans-serif;
+  background:var(--secondary);
+  color:var(--text);
 }
 
+/* =========================
+   HEADER
+========================= */
+
 .header{
- position:sticky;
- top:0;
- z-index:100;
- background:var(--primary);
- box-shadow:0 2px 10px rgba(0,0,0,.1);
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--primary);
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
 }
 
 .header-top{
- height:60px;
- display:flex;
- align-items:center;
- gap:12px;
- padding:0 12px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 12px;
 }
 
 .header-top h1{
- margin:0;
- color:white;
- white-space:nowrap;
- font-size:1.2rem;
+  margin:0;
+  color:white;
+  white-space:nowrap;
+  font-size:1.2rem;
 }
 
 .header-top input{
- flex:1;
- height:40px;
- border:none;
- border-radius:12px;
- padding:0 12px;
+  flex:1;
+  height:40px;
+  border:none;
+  border-radius:12px;
+  padding:0 12px;
 }
 
 .cart-btn{
- border:none;
- border-radius:12px;
- padding:8px 12px;
- cursor:pointer;
-}
-
-.cats{
- display:flex;
- gap:8px;
- overflow-x:auto;
- padding:10px 12px;
- background:#FFF8F0;
- scrollbar-width:none;
-}
-
-.cats::-webkit-scrollbar{display:none}
-
-.cats a{
- text-decoration:none;
- color:var(--primary);
- background:#F3E5D3;
- padding:8px 14px;
- border-radius:999px;
- white-space:nowrap;
-}
-
-.section{
- padding:16px;
- scroll-margin-top:130px;
-}
-
-.eggs-title{
-  background:#FFF8E6;
-  border-left:5px solid #F59E0B;
-  color:#F59E0B;
-  padding:10px 15px;
-  border-radius:12px;
-}
-
-.tofu-title{
-  background:#F4EEFF;
-  border-left:5px solid #A78BFA;
-  color:#7C3AED;
-  padding:10px 15px;
-  border-radius:12px;
-}
-
-.veg-title{
-  background:#ECFFF3;
-  border-left:5px solid #10B981;
-  color:#10B981;
-  padding:10px 15px;
-  border-radius:12px;
-}
-
-.meat-title{
-  background:#FFF0F0;
-  border-left:5px solid #EF4444;
-  color:#EF4444;
-  padding:10px 15px;
-  border-radius:12px;
-}
-
-.soup-title{
-  background:#EEF6FF;
-  border-left:5px solid #3B82F6;
-  color:#3B82F6;
-  padding:10px 15px;
-  border-radius:12px;
-}
-
-.rice-title{
-  background:#FFF4E8;
-  border-left:5px solid #F97316;
-  color:#F97316;
-  padding:10px 15px;
-  border-radius:12px;
-}
-.section h2{
- color:var(--primary);
- border-left:4px solid var(--accent);
- padding-left:10px;
-}
-
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:12px;
-}
-
-.card{
- background:#fffdf9;
- padding:14px;
- border-radius:16px;
- box-shadow:0 2px 8px rgba(0,0,0,.08);
- cursor:pointer;
- transition:.2s;
-}
-
-.card:hover{transform:translateY(-2px)}
-.card:active{transform:scale(.98)}
-
-.card.selected{
- border:2px solid var(--primary) !important;
- background:#FFF8F0 !important;
- box-shadow:0 0 0 1px var(--primary),
-            0 8px 20px rgba(139,94,60,.15) !important;
-}
-
-.card.selected .cn{
- color:var(--primary);
-}
-
-.cn{font-weight:700;font-size:1.1rem}
-.en{color:#666}
-
-.selected-badge{
- margin-top:10px;
- display:inline-block;
- background:var(--primary);
- color:white;
- padding:4px 10px;
- border-radius:20px;
- font-size:.8rem;
-}
-
-.sidebar{
- position:fixed;
- top:0;
- right:-340px;
- width:320px;
- height:100%;
- background:#FFF8F0;
- z-index:1000;
- transition:right .3s;
- box-shadow:-2px 0 15px rgba(0,0,0,.15);
-}
-
-.sidebar.active{right:0}
-
-.sidebar-header{
- display:flex;
- justify-content:space-between;
- align-items:center;
- padding:16px;
- border-bottom:1px solid #ddd;
-}
-
-#closeBtn{
- border:none;
- background:none;
- font-size:1.2rem;
- cursor:pointer;
-}
-
-.cart-item{
- padding:12px 16px;
- border-bottom:1px solid #eee;
-}
-
-.empty-cart{
- padding:24px;
- text-align:center;
- color:#666;
-}
-
-.overlay{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.4);
- opacity:0;
- visibility:hidden;
- transition:.3s;
- z-index:999;
-}
-
-.overlay.active{
- opacity:1;
- visibility:visible;
-}
-.copy-btn{
-  width:calc(100% - 32px);
-  margin:16px;
-  padding:12px;
   border:none;
   border-radius:12px;
-  background:#00B894;
-  color:white;
-  font-weight:600;
+  padding:8px 12px;
   cursor:pointer;
 }
 
-.copy-btn:hover{
-  opacity:.9;
+/* =========================
+   CATEGORY BAR
+========================= */
+
+.cats{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:10px 12px;
+  background:#34495e;
+  scrollbar-width:none;
+}
+
+.cats::-webkit-scrollbar{
+  display:none;
+}
+
+.cats a{
+  text-decoration:none;
+  background:#ecf0f1;
+  color:#2c3e50;
+  padding:8px 14px;
+  border-radius:999px;
+  white-space:nowrap;
+  font-weight:600;
+}
+
+.cats a:hover{
+  background:#bdc3c7;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+  padding:16px;
+  scroll-margin-top:130px;
+}
+
+.section h2{
+  margin-bottom:16px;
 }
 
 /* Eggs */
-#eggs .card{
-  background:#FFF8E6;
-  border:1px solid #FFE0A3;
+
+.eggs-title{
+  background:#fef5d6;
+  border-left:5px solid #f1c40f;
+  color:#f39c12;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 /* Tofu */
-#tofu .card{
-  background:#F4EEFF;
-  border:1px solid #D7C5FF;
+
+.tofu-title{
+  background:#f4e8fb;
+  border-left:5px solid #9b59b6;
+  color:#8e44ad;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 /* Vegetables */
-#veg .card{
-  background:#ECFFF3;
-  border:1px solid #B7F0CB;
+
+.veg-title{
+  background:#eafaf1;
+  border-left:5px solid #2ecc71;
+  color:#27ae60;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 /* Meat */
-#meat .card{
-  background:#FFF0F0;
-  border:1px solid #FFCACA;
+
+.meat-title{
+  background:#fff1e8;
+  border-left:5px solid #e67e22;
+  color:#d35400;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 /* Soup */
-#soup .card{
-  background:#EEF6FF;
-  border:1px solid #C6DFFF;
+
+.soup-title{
+  background:#ebf5fb;
+  border-left:5px solid #3498db;
+  color:#2980b9;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
 /* Rice */
-#rice .card{
-  background:#FFF4E8;
-  border:1px solid #FFD6AD;
+
+.rice-title{
+  background:#e8f8f5;
+  border-left:5px solid #1abc9c;
+  color:#16a085;
+  padding:10px 15px;
+  border-radius:12px;
 }
 
-/* Eggs Selected */
+/* =========================
+   GRID
+========================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+  position:relative;
+  padding:14px;
+  border-radius:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+}
+
+.card:active{
+  transform:scale(.98);
+}
+
+/* Eggs */
+
+#eggs .card{
+  background:#fff9e6;
+  border:1px solid #f1c40f;
+}
+
 #eggs .card.selected{
-  background:#F59E0B !important;
-  border-color:#D97706 !important;
+  background:#f39c12 !important;
+  border-color:#f1c40f !important;
 }
 
-/* Tofu Selected */
+/* Tofu */
+
+#tofu .card{
+  background:#f8f0fc;
+  border:1px solid #d7bde2;
+}
+
 #tofu .card.selected{
-  background:#8B5CF6 !important;
-  border-color:#7C3AED !important;
+  background:#8e44ad !important;
 }
 
-/* Vegetables Selected */
+/* Veg */
+
+#veg .card{
+  background:#f2fff7;
+  border:1px solid #2ecc71;
+}
+
 #veg .card.selected{
-  background:#10B981 !important;
-  border-color:#059669 !important;
+  background:#27ae60 !important;
 }
 
-/* Meat Selected */
+/* Meat */
+
+#meat .card{
+  background:#fff6ef;
+  border:1px solid #f39c12;
+}
+
 #meat .card.selected{
-  background:#EF4444 !important;
-  border-color:#DC2626 !important;
+  background:#d35400 !important;
 }
 
-/* Soup Selected */
+/* Soup */
+
+#soup .card{
+  background:#f4faff;
+  border:1px solid #3498db;
+}
+
 #soup .card.selected{
-  background:#3B82F6 !important;
-  border-color:#2563EB !important;
+  background:#2980b9 !important;
 }
 
-/* Rice Selected */
+/* Rice */
+
+#rice .card{
+  background:#f2fffc;
+  border:1px solid #1abc9c;
+}
+
 #rice .card.selected{
-  background:#F97316 !important;
-  border-color:#EA580C !important;
+  background:#16a085 !important;
 }
 
 .card.selected .cn,
@@ -330,8 +275,60 @@ body{
   color:white;
 }
 
-.card{
-  position:relative;
+.cn{
+  font-weight:700;
+  font-size:1.1rem;
+}
+
+.en{
+  color:#666;
+}
+
+.selected-badge{
+  margin-top:10px;
+  display:inline-block;
+  background:rgba(255,255,255,.2);
+  color:white;
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:.8rem;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+  position:fixed;
+  top:0;
+  right:-340px;
+  width:320px;
+  height:100%;
+  background:#ecf0f1;
+  z-index:1000;
+  transition:right .3s;
+  box-shadow:-2px 0 15px rgba(0,0,0,.15);
+}
+
+.sidebar.active{
+  right:0;
+}
+
+.sidebar-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px;
+  background:#2c3e50;
+  color:white;
+}
+
+#closeBtn{
+  border:none;
+  background:none;
+  color:white;
+  font-size:20px;
+  cursor:pointer;
 }
 
 .cart-item{
@@ -339,19 +336,69 @@ body{
   align-items:center;
   gap:12px;
   padding:12px 16px;
-  border-bottom:1px solid #eee;
+  border-bottom:1px solid #dcdcdc;
 }
+
+.empty-cart{
+  padding:24px;
+  text-align:center;
+  color:#666;
+}
+
+/* =========================
+   REMOVE BUTTON
+========================= */
 
 .remove-btn{
   border:none;
   background:none;
-  color:#D1D5DB;
+  color:#95a5a6;
   cursor:pointer;
-  font-size:16px;
-  padding:4px 6px;
+  font-size:18px;
+  font-weight:bold;
+  padding:0;
+  flex-shrink:0;
 }
 
 .remove-btn:hover{
-  color:#6B7280;
+  color:#2c3e50;
 }
 
+/* =========================
+   COPY BUTTON
+========================= */
+
+.copy-btn{
+  width:calc(100% - 32px);
+  margin:16px;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:#16a085;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.copy-btn:hover{
+  background:#1abc9c;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:999;
+}
+
+.overlay.active{
+  opacity:1;
+  visibility:visible;
+}
