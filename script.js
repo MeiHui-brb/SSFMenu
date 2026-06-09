@@ -364,7 +364,7 @@ document
 
     }
   );
-
+  
 function closeSidebar(){
 
   sidebar.classList.remove(
@@ -388,6 +388,49 @@ overlay.addEventListener(
   'click',
   closeSidebar
 );
+
+document
+  .getElementById('copyBtn')
+  .addEventListener(
+    'click',
+    copyResults
+  );
+
+async function copyResults(){
+
+  const items = Object
+    .values(votes)
+    .sort((a,b) => b.count - a.count);
+
+  if(items.length === 0){
+    alert('No items selected yet.');
+    return;
+  }
+
+  const text = items
+    .map(item => item.cn)
+    .join('\n');
+
+  try{
+
+    await navigator.clipboard.writeText(text);
+
+    const btn =
+      document.getElementById('copyBtn');
+
+    btn.textContent = '✅ Copied';
+
+    setTimeout(() => {
+      btn.textContent = '📋 Copy Results';
+    }, 2000);
+
+  }catch(err){
+
+    alert('Unable to copy to clipboard');
+
+  }
+
+}
 
 render();
 updateCart();

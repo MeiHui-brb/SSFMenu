@@ -1,9 +1,10 @@
 
 :root{
- --primary:#8B5E3C;
- --secondary:#F5EBDD;
- --accent:#D4A373;
- --text:#3B2F2F;
+ --primary:#00B894;
+ --secondary:#F8FFFD;
+ --accent:#00D4AA;
+ --dark:#111827;
+ --text:#1F2937;
 }
 
 *{box-sizing:border-box}
@@ -78,6 +79,33 @@ body{
  scroll-margin-top:130px;
 }
 
+.signature-title{
+ border-left:5px solid #00B894;
+}
+
+.eggs-title{
+ border-left:5px solid #F59E0B;
+}
+
+.tofu-title{
+ border-left:5px solid #A78BFA;
+}
+
+.veg-title{
+ border-left:5px solid #10B981;
+}
+
+.meat-title{
+ border-left:5px solid #EF4444;
+}
+
+.soup-title{
+ border-left:5px solid #3B82F6;
+}
+
+.rice-title{
+ border-left:5px solid #F97316;
+}
 .section h2{
  color:var(--primary);
  border-left:4px solid var(--accent);
@@ -174,4 +202,19 @@ body{
 .overlay.active{
  opacity:1;
  visibility:visible;
+}
+.copy-btn{
+  width:calc(100% - 32px);
+  margin:16px;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:#00B894;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.copy-btn:hover{
+  opacity:.9;
 }
