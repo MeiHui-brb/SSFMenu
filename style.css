@@ -134,9 +134,19 @@ body{
   border-radius:12px;
 }
 
-/* Meat */
+/* Seafood */
 
-.meat-title{
+.seafood-title{
+  background:#ffe8d9;
+  border-left:5px solid #a65b19;
+  color:##7a3304;
+  padding:10px 15px;
+  border-radius:12px;
+}
+
+/* Pork */
+
+.pork-title{
   background:#fff1e8;
   border-left:5px solid #e67e22;
   color:#d35400;
@@ -248,17 +258,27 @@ body{
   background:#27ae60 !important;
 }
 
-/* Meat */
+/* Seafood */
 
-#meat .card{
+#seafood .card{
+  background:#ffe8d7;
+  border:1px solid #de8d0d;
+}
+
+#seafood .card.selected{
+  background:#b84a02 !important;
+}
+
+/* Pork */
+
+#pork .card{
   background:#fff6ef;
   border:1px solid #f39c12;
 }
 
-#meat .card.selected{
+#pork .card.selected{
   background:#d35400 !important;
 }
-
 /* Soup */
 
 #soup .card{

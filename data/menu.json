@@ -12,9 +12,13 @@
 		"icon": "🥬",
 		"class": "veg-title"
 	  },
-	  "meat": {
-		"icon": "🍖",
-		"class": "meat-title"
+	  "seafood": {
+		"icon": "🎣🦐",
+		"class": "seafood-title"
+	  },
+	  "pork": {
+		"icon": "🐽",
+		"class": "pork-title"
 	  },
 	  "soup": {
 		"icon": "🥣",
@@ -114,22 +118,25 @@
     ]
   },
   {
-    "id":"meat",
-    "title":"肉类 Meat & Seafood",
+    "id":"fish",
+    "title":"海鲜类 Seafood",
     "items":[
       ["姜葱煎鱼","Ginger Scallion Fish"],
       ["Butter Miso Salmon","Butter Miso Salmon"],
       ["咖喱叶煎鱼","Curry Leaf Fish"],
       ["番茄卤鱼","Tomato Fish Stew"],
       ["潮州蒸鱼","Teochew Steamed Fish"],
-      
-	  ["三杯鸡","Three Cup Chicken"],
-      
+	  
 	  ["Garlic虾","Garlic Prawn"],
 	  ["干煎虾","Soy Sauce Prawn"],
 	  ["蒸虾","Steam Prawn"],
-	  ["虾","Garlic Prawn"],
-	  
+	  ["虾","Garlic Prawn"]
+    ],
+  },
+  {
+    "id":"pork",
+    "title":"猪类 Pork",
+    "items":[  
 	  ["豆豉苦瓜猪肉","Pork with Bitter Gourd"],
       ["肉碎Potato","Minced meat potato"],
       ["臭豆肉碎","Petai minced meat"],
@@ -157,10 +164,12 @@
     "id":"stew",
     "title":"焖炖类 Braised & Stew",
     "items":[
+	  ["三杯鸡","Three Cup Chicken"],
       ["无水鸡蔬菜锅","Waterless Chicken Pot"],
       ["Mille-Feuille Nabe","Mille-Feuille Nabe"],
       ["Chanko Nabe","Chanko Nabe"],
       ["Miso汤","Miso Soup"],
+	  ["Miso南瓜汤","Miso Pumpkin Soup"],
       ["Doenjang-jjigae","Korean Soybean Stew"]
     ]
   },  
