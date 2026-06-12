@@ -17,8 +17,12 @@
 		"class": "meat-title"
 	  },
 	  "soup": {
-		"icon": "🍲",
+		"icon": "🥣",
 		"class": "soup-title"
+	  },
+	  "stew": {
+		"icon": "🍲",
+		"class": "stew-title"
 	  },
 	  "rice": {
 		"icon": "🍚",
@@ -126,7 +130,7 @@
 	  ["蒸虾","Steam Prawn"],
 	  ["虾","Garlic Prawn"],
 	  
-      ["豆豉苦瓜猪肉","Pork with Bitter Gourd"],
+	  ["豆豉苦瓜猪肉","Pork with Bitter Gourd"],
       ["肉碎Potato","Minced meat potato"],
       ["臭豆肉碎","Petai minced meat"],
       ["咕噜肉","Sweet & Sour Pork"],
@@ -134,25 +138,32 @@
       ["姜葱五花肉","Ginger scallion Pork Belly"],
       ["Kimchi炒猪肉","Kimchi Pork Belly"],
       ["煎五花肉","Pan Fried Pork Belly"],
-      ["椒仔花肉","Chili Pork"],
+      ["椒仔花肉","Chili Pork"]
     ]
   },
   {
     "id":"soup",
-    "title":"汤类 Soup & Hot Pot",
+    "title":"汤类 Soup",
     "items":[
       ["椰子鸡","Coconut Chicken"],
-      ["无水鸡蔬菜锅","Waterless Chicken Pot"],
-      ["Mille-Feuille Nabe","Mille-Feuille Nabe"],
       ["ABC汤","ABC Soup"],
       ["老王瓜汤","Old Cucumber Soup"],
-      ["花生莲藕汤","Peanut Lotus Soup"],
+      ["西洋菜汤","Watercress Soup"],
+	  ["花生莲藕汤","Peanut Lotus Soup"],
+      ["肉骨茶","Bak Kut Teh"]
+    ]
+  },
+  {
+    "id":"stew",
+    "title":"炖卤类 Braised & Stew",
+    "items":[
+      ["无水鸡蔬菜锅","Waterless Chicken Pot"],
+      ["Mille-Feuille Nabe","Mille-Feuille Nabe"],
       ["Chanko Nabe","Chanko Nabe"],
-      ["肉骨茶","Bak Kut Teh"],
       ["Miso汤","Miso Soup"],
       ["Doenjang-jjigae","Korean Soybean Stew"]
     ]
-  },
+  },  
   {
     "id":"rice",
     "title":"单座饭 Rice",
