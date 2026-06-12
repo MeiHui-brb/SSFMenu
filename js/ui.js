@@ -192,7 +192,7 @@ async function copyResults(){
     const icon =
       getItemCategory(item.cn).icon;
 
-    return `${icon} ${item.cn}`;
+    return `${icon} ${item.cn} ${item.en}`;
 
   })
   .join('\n');
