@@ -153,6 +153,15 @@ body{
   padding:10px 15px;
   border-radius:12px;
 }
+/* Stew */
+
+.stew-title{
+  background:#d8f2f1;
+  border-left:5px solid #34badb;
+  color:#29a1b9;
+  padding:10px 15px;
+  border-radius:12px;
+}
 
 /* Rice */
 
@@ -260,6 +269,18 @@ body{
 #soup .card.selected{
   background:#2980b9 !important;
 }
+
+/* Stew */
+
+#stew .card{
+  background:#f4faff;
+  border:1px solid #3498db;
+}
+
+#stew .card.selected{
+  background:#2980b9 !important;
+}
+
 
 /* Rice */
 
